@@ -1,0 +1,22 @@
+<fieldset [formGroup]="form.formGroup" class="container">
+  <legend>List form</legend>
+
+  <div
+    [formArrayName]="form.formControlNames.items"
+    *ngFor="let item of form.formGroup.controls.items.controls; let i = index"
+  >
+    <app-item-form [formControl]="item"></app-item-form>
+
+    <button (click)="removeItem(i)" [disabled]="form.formGroup.disabled">
+      x
+    </button>
+  </div>
+
+  <button
+    color="primary"
+    (click)="addItem()"
+    [disabled]="form.formGroup.disabled"
+  >
+    Add item
+  </button>
+</fieldset>
